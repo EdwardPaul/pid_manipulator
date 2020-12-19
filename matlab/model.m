@@ -1,0 +1,43 @@
+clear all;
+close all;
+clc;
+
+%% Задание системы
+s = tf('s'); % Ввод передаточной функции (transer function)
+H = 18 / ((2*s + 21)*(2*s + 1));
+%H = (exp(-10*s)/(40*s+1)); % Передаточная функция, данная в задаче
+Ha = pade(H); % Аппроксимируем
+G_lin = ss(Ha); % объект statespace
+G1 = ss(H); 
+
+%% Проверка наблюдаемости и управляемости системы
+check_kalman(G1); 
+
+param.fileName = strcat('poles_',datestr(datetime('now'),'yyyy-mm-dd_HH-MM-SS'));
+
+param.fileFormat = "pdf"; 
+param.pictUnit = 'centimeters';
+param.pictSize = [10 10]; 
+param.tickFontsize = 10;  
+param.mainFontsize = 16; 
+param.MarkerSize = 25;
+
+print_poles(G1, param)
+
+
+
+open('manipulator.slx');
+
+sim_data = sim('manipulator.slx');
+
+
+param.fileName = strcat('sim_', datestr(datetime('now'),'yyyy-mm-dd_HH-MM-SS'));
+
+param.pictUnit = 'centimeters'; 
+param.pictSize = [20 20]; 
+param.tickFontsize = 10; 
+param.mainFontsize = 16; 
+param.LineWidth = 2;
+param.Ylabel = '$U_a$, V';
+
+print_sim(sim_data.tout,[sim_data.Y1.data, sim_data.Y2.data, sim_data.Yref.data],param)
