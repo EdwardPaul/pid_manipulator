@@ -10,7 +10,7 @@ ax.Parent = fig;
 
 p = plot(ax, poles); 
 %% 
-fig.Name  = 'Ïîëþñà';
+fig.Name  = 'Poles';
 fig.Color = 'white';
 
 fig.Units = param.pictUnit;
@@ -50,7 +50,7 @@ ax.YLabel.Interpreter = 'latex';
 ax.XLabel.Interpreter = 'latex';
 ax.FontWeight = 'normal';
 
-ax.Title.String = 'Ïîëþñà ñèñòåìû';
+ax.Title.String = 'Poles';
 ax.Title.FontSize = param.mainFontsize;
 
 %% 
