@@ -4,17 +4,16 @@ clc;
 
 %% Задание системы
 s = tf('s'); % Ввод передаточной функции (transer function)
-H = 18 / ((2*s + 21)*(2*s + 1) + 9);
-%H = (exp(-10*s)/(40*s+1)); % Передаточная функция, данная в задаче
-Ha = pade(H); % Аппроксимируем
+H = 18 / ((2*s + 21)*(2*s + 1) + 9); %Передаточная функция
+Ha = pade(H); % линейная аппроксимация
 G_lin = ss(Ha); % объект statespace
 G1 = ss(H); 
-
-step(G1)
 
 %% Проверка наблюдаемости и управляемости системы
 check_kalman(G1); 
 
+
+%% Вывод графика полюсов системы
 param.fileName = strcat('poles_',datestr(datetime('now'),'yyyy-mm-dd_HH-MM-SS'));
 
 param.fileFormat = "pdf"; 
@@ -26,8 +25,7 @@ param.MarkerSize = 25;
 
 print_poles(G1, param)
 
-
-
+%% Вывод графиков из Simulink модели
 open('manipulator.slx');
 
 sim_data = sim('manipulator.slx');

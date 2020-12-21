@@ -14,7 +14,7 @@ p = plot(ax, x, y);
 
 %% 
 
-fig.Name='Âûõîäíîé ñèãíàë';
+fig.Name='Simulation results';
 fig.Color='white';
 
 fig.Units = param.pictUnit;
@@ -66,5 +66,6 @@ end
 p(end).LineStyle = '--';
 
 %% 
+legend('PID-regulator', 'PD-regulator');
 print(fig,param.fileName,'-painters','-r300','-fillpage','-dpdf')
 end
