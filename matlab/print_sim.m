@@ -67,6 +67,6 @@ end
 p(end).LineStyle = '--';
 
 %% 
-%legend('PID-regulator', 'PD-regulator');
+legend('PID-regulator', 'PD-regulator');
 print(fig,param.fileName,'-painters','-r300','-fillpage','-dpdf')
 end

@@ -4,7 +4,7 @@ clc;
 
 %% Задание системы
 s = tf('s'); % Ввод передаточной функции (transer function)
-H = 18 / (42s^2); %Передаточная функция
+H = 18 / ((2*s + 21)*(2*s + 1) + 9); %Передаточная функция
 G1 = ss(H); 
 
 %% Проверка наблюдаемости и управляемости системы
@@ -38,4 +38,4 @@ param.mainFontsize = 16;
 param.LineWidth = 2;
 param.Ylabel = '$U_a$, V';
 
-print_sim(sim_data.tout,[sim_data.Y_step.data, sim_data.Yref.data],param)
+print_sim(sim_data.tout,[sim_data.Y1.data, sim_data.Y2.data, sim_data.Yref.data],param)
