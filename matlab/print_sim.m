@@ -14,7 +14,7 @@ p = plot(ax, x, y);
 
 %% 
 
-fig.Name='Simulation results';
+fig.Name='Signal';
 fig.Color='white';
 
 fig.Units = param.pictUnit;
@@ -57,6 +57,7 @@ set(ax,'TickLabelInterpreter', 'latex')
 ax.YLabel.Interpreter = 'latex';
 ax.XLabel.Interpreter = 'latex';
 ax.FontWeight = 'normal';
+ax.Title.String = 'Signal';
 
 
 %%
@@ -66,6 +67,6 @@ end
 p(end).LineStyle = '--';
 
 %% 
-legend('PID-regulator', 'PD-regulator');
+%legend('PID-regulator', 'PD-regulator');
 print(fig,param.fileName,'-painters','-r300','-fillpage','-dpdf')
 end
